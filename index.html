@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="main.css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+
   </head>
   <body>
+    <header>
+      <h4>@nassirze</h4>
+      <h1>Twittler</h1>
+      <button>tweet</button>
+    </header>
+    <table class="tweet">
+      
+    </table>
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
-        $body.html('');
+        //$body.html('');
 
         var index = streams.home.length - 1;
         while(index >= 0){
