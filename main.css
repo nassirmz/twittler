@@ -1,35 +1,26 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+* {
     margin: 0;
     padding: 0;
-    border: 0;
-    font: inherit;
-    vertical-align: baseline;
-}
-html, body {
-    font-size: 100%;
+    transition: all 0.2s;
+  color: #555;
 }
 
+body {
+    font-size: 100%;
+    background: rgba(204, 235, 252, 0.3);
+}
+/*****header******/
 header {
     color: #555;
     border-bottom: 1px solid rgba(76, 160, 205, 0.32);
+    box-shadow: 0px 4px rgba(76,160,205);
     text-align: center;
     position: relative;
     margin-bottom: 20px;
+    background: white;
     padding: 5px;
 }
-h1, h4, button {
+h1, h4, h3, button {
     display: inline-block;
 }
 h4, button {
@@ -45,13 +36,53 @@ h4 {
     float: left;
     margin: 20px 5%;
 }
+h4:hover {
+  border-bottom: 2px solid #4ca0cd; 
+}
 button {
    float: right;
    margin: 10px 5%;
    border: 2px solid #4ca0cd; 
-   background: #4ca0cd;
+   background: #fff;
    padding: 2px 15px;
    border-radius: 50px;
    outline: none;
    cursor: pointer;
+   color: #555;
+}
+button:hover {
+    background: #4ca0cd; 
+}
+/*****section******/
+section {
+  width: 70%;
+  background:  rgb(255, 255, 255);
+  margin: 10px auto;
+  border: 2px solid rgb(204, 235, 252);
+  /*padding: 10px;*/
+  border-radius: 5px;
+}
+li {
+  border-bottom: 1px solid rgb(204,234,252);
+  padding: 15px;
+  position: relative;
+  list-style: none;
+  min-height: 50px;
+}
+
+li:hover {
+  background: rgba(204, 235, 252, 0.3);
+}
+h3 {
+  margin: 5px 10px;
+}
+p {
+  margin-left: 25px;
+}
+span {
+  color: #aaa;
+  font-size: 15px;
+}
+span:before {
+  content: "\00b7";
 }
