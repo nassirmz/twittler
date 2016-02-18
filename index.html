@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="main.css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
@@ -10,30 +10,38 @@
   </head>
   <body>
     <header>
-      <h4>@nassirze</h4>
-      <h1>Twittler</h1>
-      <button>tweet</button>
+      <h3 class="user">@nassirze</h3>
+      <h1>TWITTLER</h1>
+      <button>twittle</button>
     </header>
-    <table class="tweet">
-      
-    </table>
+    <section>
+      <ul>
+        <!-- 
+        <li>
+          <h3>@shawnDrost</h3>
+          <span> 2014-01-2014</span>
+          <p>ab za alem eziamo abey emo abey emo abey emo abza alem ezi amo</p>
+        </li>
+        -->
+      </ul>
+    </section>
     <script>
-
       $(document).ready(function(){
-        var $body = $('body');
-        //$body.html('');
-
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
+        var ul = $("ul");
+        function twittleFormer(obj) {
+          var twittle = $("<li><h3>@" + obj.user + "</h3><span>" + obj.created_at + "</span><p>" + obj.message + "<p></li>");
+          twittle.prependTo(ul);
         }
+        
+        //initialize the page
+        function init() {
+          streams.home.forEach(twittleFormer);
+        }
+        init();
+        //update twittes every 10 seconds
+        setInterval(function() {streams.home.forEach(twittleFormer)}, 10000);
 
       });
-
     </script>
   </body>
 </html>
