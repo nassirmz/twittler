@@ -10,12 +10,19 @@
   </head>
   <body>
     <header>
-      <h3 class="user">@nassirze</h3>
+      <h4>home</h4>
       <h1>TWITTLER</h1>
       <button>twittle</button>
     </header>
+    <div>
+      <h2>NASSIRZE</h2>
+      <h3 class="user">@nassirze</h3>
+    </div>
+    
     <section>
+      <p class="newTweets"> press for new twittles</p>
       <ul>
+        
         <!-- 
         <li>
           <h3>@shawnDrost</h3>
@@ -33,11 +40,13 @@
           twittle.prependTo(ul);
         }
         
-        //initialize the page
-        function init() {
-          streams.home.forEach(twittleFormer);
-        }
-        init();
+        ul.on("click", "h3", function() {
+          var userSelected = $(this).text().slice(1);
+          var twittles = streams.home.filter(function(val) {
+            return val.user ===userSelected;
+          });
+          setInterval(function() { twittles.forEach(twittleFormer)});
+        });
         //update twittes every 10 seconds
         setInterval(function() {streams.home.forEach(twittleFormer)}, 10000);
 
