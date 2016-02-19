@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     transition: all 0.2s;
-    color: #777;
+    color: #555;
     font: 20px "Dosis", sans-serif;
 }
 
@@ -109,7 +109,7 @@ section h3:hover {
   color: #ccebfc;
 }
 /****queries*****/
-@media only screen and (max-width: 1025px) {
+@media only screen and (max-width: 1125px) {
   section, div {
     width: 450px;
   }
@@ -132,5 +132,9 @@ section h3:hover {
   }
   section, div {
     width: 350px;
+  }
+  li {
+    min-height: 30px;
+    padding: 5px;
   }
 }
