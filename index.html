@@ -1,55 +1,84 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link href='https://fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="main.css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   </head>
   <body>
     <header>
-      <h4>home</h4>
+      <h3 class="home">home</h3>
       <h1>TWITTLER</h1>
       <button>twittle</button>
     </header>
     <div>
-      <h2>NASSIRZE</h2>
-      <h3 class="user">@nassirze</h3>
     </div>
     
     <section>
-      <p class="newTweets"> press for new twittles</p>
+      <h3 class="newTweets"> press for new twittles</h3>
       <ul>
-        
-        <!-- 
-        <li>
-          <h3>@shawnDrost</h3>
-          <span> 2014-01-2014</span>
-          <p>ab za alem eziamo abey emo abey emo abey emo abza alem ezi amo</p>
-        </li>
-        -->
       </ul>
     </section>
     <script>
       $(document).ready(function(){
-        var ul = $("ul");
+        var ul = $("ul"),
+        div = $("div"),
+        newTweets = $(".newTweets"),
+        home = $(".home"),
+        userName = "nassirze";
+
+        //each twittle former function
         function twittleFormer(obj) {
-          var twittle = $("<li><h3>@" + obj.user + "</h3><span>" + obj.created_at + "</span><p>" + obj.message + "<p></li>");
+          var twittle = $("<li><h3>@" + obj.user + "</h3 class='twittleUser'><span>" + obj.created_at + "</span><p>" + obj.message + "<p></li>");
           twittle.prependTo(ul);
+        }
+
+        //the function that sets the userName selected on the left div
+        function leftBlockFormer() {
+          var leftBlock = ("<h2>" + userName + "</h2><h3 class='user'>@" + userName + "</h3");
+          div.html(leftBlock);
+        }
+        
+        //based on the userName it show all current twittles on stream.home
+        function viewedTwittles(userName) {
+          var twittles;
+          if(userName ==="nassirze") {
+            twittles = streams.home;
+          } else {
+            twittles = streams.home.filter(function(val) {
+              return val.user ===userName;
+            });
+          }
+          return twittles;
+        }
+
+        function set() {
+          ul.html("");
+          var twittles = viewedTwittles(userName);
+          leftBlockFormer();
+          twittles.forEach(twittleFormer);
         }
         
         ul.on("click", "h3", function() {
-          var userSelected = $(this).text().slice(1);
-          var twittles = streams.home.filter(function(val) {
-            return val.user ===userSelected;
-          });
-          setInterval(function() { twittles.forEach(twittleFormer)});
-        });
-        //update twittes every 10 seconds
-        setInterval(function() {streams.home.forEach(twittleFormer)}, 10000);
+          userName = $(this).text().slice(1);
+          set();
 
+        });
+        
+        newTweets.on("click", function() {
+          userName = $(".user").text().slice(1);
+          set();
+        });
+
+        home.on("click", function() {
+          userName = "nassirze";
+          set();
+        });
+        set();
       });
     </script>
   </body>
